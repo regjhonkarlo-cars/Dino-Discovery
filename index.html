@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinosaur Discovery</title>
+  <link rel="stylesheet" href="DinoDiscovery.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🦕 Dinosaur Discovery 🦖</h1>
+
+      <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('species')">Species</button>
+        <button onclick="showPage('extinction')">Extinction</button>
+        <button onclick="showPage('facts')">Fun Facts</button>
+      </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+      <h2>Welcome to the Age of Dinosaurs</h2>
+      <p>Dinosaurs were remarkable reptiles that dominated Earth for over 165 million years during the Mesozoic Era...</p> 
+      <p>The study of dinosaurs, known as paleontology, has revolutionized our understanding of evolution...</p>
+    </section>
+
+    <!-- SPECIES PAGE -->
+    <section id="species" class="page">
+      <h2>Dinosaur Species</h2>
+
+      <div class="species-grid">
+
+        <div class="species-card">
+          <img src="images/trex.jpg" class="dino-photo" alt="T-Rex">
+          <h3>Tyrannosaurus Rex</h3>
+          <p>The "king of dinosaurs" was one of the largest carnivores ever...</p>
+        </div>
+
+        <div class="species-card">
+          <img src="images/brachiosaurus.jpg" class="dino-photo" alt="Brachiosaurus">
+          <h3>Brachiosaurus</h3>
+          <p>This gentle giant was one of the tallest dinosaurs...</p>
+        </div>
+
+        <div class="species-card">
+          <img src="images/triceratops.jpg" class="dino-photo" alt="Triceratops">
+          <h3>Triceratops</h3>
+          <p>Known for its three distinctive horns and large bony frill...</p>
+        </div>
+
+        <div class="species-card">
+          <img src="images/velociraptor.jpg" class="dino-photo" alt="Velociraptor">
+          <h3>Velociraptor</h3>
+          <p>Despite being smaller than portrayed in movies...</p>
+        </div>
+
+        <div class="species-card">
+          <img src="images/stegosaurus.jpg" class="dino-photo" alt="Stegosaurus">
+          <h3>Stegosaurus</h3>
+          <p>Famous for its distinctive back plates and spiked tail...</p>
+        </div>
+
+        <div class="species-card">
+          <img src="images/spinosaurus.jpg" class="dino-photo" alt="Spinosaurus">
+          <h3>Spinosaurus</h3>
+          <p>The largest known carnivorous dinosaur...</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXTINCTION PAGE -->
+    <section id="extinction" class="page">
+      <h2>The Great Extinction</h2>
+      <p>The extinction of dinosaurs 66 million years ago marks one of the most dramatic events...</p> 
+      <p>However, the asteroid impact wasn't the only factor...</p>
+    </section>
+
+    <!-- FUN FACTS PAGE -->
+    <section id="facts" class="page">
+      <h2>Amazing Dinosaur Facts</h2>
+
+      <div class="fact-item">
+        <h3>🦴 Birds Are Living Dinosaurs</h3>
+        <p>Modern birds are direct descendants...</p>
+      </div>
+
+      <div class="fact-item">
+        <h3>🥚 Dinosaur Eggs Were Surprisingly Small</h3>
+        <p>Even the largest dinosaurs laid relatively small eggs...</p>
+      </div>
+
+      <!-- Random Fact Generator -->
+      <button id="factBtn">Show Random Fact</button>
+      <p id="randomFact" class="random-fact"></p>
+
+    </section>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* ---------- PAGE SWITCHING WITH FADE ---------- */
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.remove('active');
+        page.style.opacity = 0;
+      });
+
+      const activePage = document.getElementById(pageId);
+      activePage.classList.add('active');
+
+      setTimeout(() => {
+        activePage.style.opacity = 1;
+      }, 100);
+    }
+
+    /* ---------- RANDOM FACT GENERATOR ---------- */
+    const dinoFacts = [
+      "Some dinosaurs had feathers, not scales!",
+      "The T-Rex had one of the strongest bites in history!",
+      "Stegosaurus had a brain the size of a walnut.",
+      "Velociraptors were feathered and smaller than in movies.",
+      "Brachiosaurus could grow longer than a basketball court.",
+      "Spinosaurus may have been able to swim."
+    ];
+
+    document.getElementById("factBtn").onclick = function() {
+      const random = Math.floor(Math.random() * dinoFacts.length);
+      document.getElementById("randomFact").textContent = dinoFacts[random];
+    };
+  </script>
+</body>
+</html>
